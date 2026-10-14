@@ -16,6 +16,7 @@ __pycache__/
 # Local data, storage, and developer playgrounds
 backend/data
 backend/playgrounds/
+*.mp4
 
 # ==============================================================================
 # Node.js & Frontend Dependencies / Builds

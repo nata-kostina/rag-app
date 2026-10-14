@@ -65,9 +65,10 @@ cd rag-app
 ```
 
 2. **Set up Environment Variables:**
-Copy the example `.env` file in the backend directory and configure your credentials (e.g., OpenAI API keys):
+Copy the example .env files in both backend and frontend directories and configure your credentials (e.g., OpenAI API keys):
 ```bash
 cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
 ```
 
 3. **Start the Stack with Docker Compose:**

@@ -41,7 +41,7 @@ services:
       - QDRANT_URL=http://qdrant-rag-app:6333
       - INNGEST_BASE_URL=http://inngest:8288
     volumes:
-      - - ./backend/data:/app/data
+      - ./backend/data:/app/data
     depends_on:
       - qdrant
       - inngest
