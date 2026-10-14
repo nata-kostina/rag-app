@@ -1,0 +1,51 @@
+services:
+  frontend:
+    image: node:24-slim
+    container_name: frontend
+    working_dir: /frontend
+    volumes:
+      - ./frontend:/frontend
+      - pnpm_store:/root/.local/share/pnpm/store
+    ports:
+      - "5173:5173"
+    command: sh -c "corepack enable && pnpm install && pnpm dev --host"
+    depends_on:
+      - backend
+
+  qdrant:
+    image: qdrant/qdrant:v1.14.0
+    container_name: qdrant-rag-app
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  inngest:
+    image: inngest/inngest:latest
+    container_name: inngest
+    ports:
+      - "8288:8288"
+    command: inngest dev -u http://backend:8000/api/ingest --no-discovery
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - QDRANT_URL=http://qdrant-rag-app:6333
+      - INNGEST_BASE_URL=http://inngest:8288
+    volumes:
+      - - ./backend/data:/app/data
+    depends_on:
+      - qdrant
+      - inngest
+
+volumes:
+  pnpm_store:
+  qdrant_data:

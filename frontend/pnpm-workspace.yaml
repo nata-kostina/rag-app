@@ -1,0 +1,5 @@
+savePrefix: ""
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+allowBuilds:
+  unrs-resolver: true

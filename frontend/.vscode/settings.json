@@ -1,0 +1,19 @@
+{
+    "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.tabSize": 4
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.tabSize": 4
+    },
+    "js/ts.preferences.quoteStyle": "single",
+    "js/ts.format.semicolons": "remove",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.formatOnSave": false
+}

@@ -1,0 +1,50 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "A full-stack RAG application leveraging vector databases and background workflows to automate document parsing, semantic search, and context-aware querying."
+authors = [
+    { name = "Natallia", email = "natakostina123@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "aiosqlite==0.22.1",
+    "alembic==1.20.0",
+    "colorlog==6.12.0",
+    "fastapi==0.141.1",
+    "inngest==0.5.19",
+    "llama-index-core==0.14.25",
+    "llama-index-readers-file==0.7.0",
+    "openai==3.20.0",
+    "pydantic==2.13.5",
+    "pydantic-settings==2.15.0",
+    "python-multipart==0.0.32",
+    "qdrant-client==1.19.1",
+    "sqlalchemy[asyncio]==2.1.1",
+    "uvicorn==0.54.0",
+]
+
+[tool.uv]
+package = false
+add-bounds = "exact"
+exclude-newer = "7 days"
+
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+exclude = ["alembic"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.poe.tasks]
+check = "ruff check ."
+fix = "ruff check --fix ."
+server = "--locked --no-sync uvicorn app.main:create_app --factory --reload"
+inngest = { script = "subprocess:run(['npx', 'inngest-cli@latest', 'dev', '-u', 'http://127.0.0.1:8000/api/ingest', '--no-discovery'], shell=True)" }
+
+[dependency-groups]
+dev = [
+    "ipykernel==7.3.0",
+    "poethepoet==0.48.0",
+    "ruff==0.16.9",
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "query": "What was the total Capital Expenditure (CapEx) for Aetheris Dynamics Inc. in FY2025, and what percentage of total net cash provided by operating activities did it represent?",
+        "sources": [
+            {
+                "originalFileName": "Aetheris_Dynamics_10K_Report.pdf"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "query": "What were the total expenditures on Research and Development (R&D) for Vortexis Cybernetics Inc. in FY2025, and what percentage of total net revenues did they represent?",
+        "sources": [
+            {
+                "originalFileName": "Vortexis_Cybernetics_2025_10K_Report.pdf"
+            }
+        ]
+    }
+]
